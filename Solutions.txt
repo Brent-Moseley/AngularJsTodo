@@ -1,0 +1,2 @@
+Adding color:
+<span ng-style="{'color': todo.color}">{{todo.name}}</span>
