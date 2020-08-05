@@ -1,4 +1,4 @@
 <h1>{{title}}</h1>
 <div ng-repeat="todo in list">
-  <input type="checkbox" ng-model="todo.completed"> <span>{{todo.name}}</span>
+  <input type="checkbox" ng-model="todo.completed" ng-change="updateCompleted(todo)"> <span ng-style="{color: todo.color}">{{todo.name}}</span>
 </div>

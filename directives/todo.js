@@ -5,6 +5,18 @@ app.directive('myTodo', function(){
       scope: {
         list: '=',
         title: '@'
+      },
+      
+      link: function(scope) {
+        scope.updateCompleted = function(todo){ 
+          if(todo.name.charAt(0) =='M'){
+            todo.color = "magenta";
+          }
+          else if (todo.completed ==true){
+            todo.color = 'green';
+          }
+          else todo.color = 'orange';
+        }
       }
     };
   });
