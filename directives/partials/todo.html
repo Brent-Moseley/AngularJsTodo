@@ -1,4 +1,13 @@
 <h1>{{title}}</h1>
-<div ng-repeat="todo in list">
-  <input type="checkbox" ng-model="todo.completed" ng-change="updateCompleted(todo)"> <span ng-style="{color: todo.color}">{{todo.name}}</span>
+<p>
+  Priority Counts:
+  <br/>
+  High: {{countHigh}}, Medium: {{countMedium}}, Low: {{countLow}}
+</p>
+<div ng-repeat="todo in list" style="width: 400px;">
+  <input type="checkbox" ng-model="todo.completed" ng-change="updateCompleted(todo)"> 
+  <span ng-style="{color: todo.color, 'margin-left': '10px'}">{{todo.name}}</span>
+  <span style="float: right">
+    Priority:   <select ng-model="todo.priority" ng-options="p as p for p in priorityNames" ng-change="updatePriorities()"></select>
+  </span> 
 </div>

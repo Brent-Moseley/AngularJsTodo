@@ -4,10 +4,11 @@ app.directive('myTodo', function(){
       templateUrl: '/directives/partials/todo.html',
       scope: {
         list: '=',
-        title: '@'
+        title: '@',
+        priorityNames: '='
       },
       
-      link: function(scope) {
+      link: function(scope, elem, attrs) {
         scope.updateCompleted = function(todo){ 
           if(todo.name.charAt(0) =='M'){
             todo.color = "magenta";
@@ -16,6 +17,17 @@ app.directive('myTodo', function(){
             todo.color = 'green';
           }
           else todo.color = 'orange';
+        };
+
+        scope.updatePriorities = function() {
+          scope.countHigh = 0;
+          scope.countMedium = 0;
+          scope.countLow = 0;
+          angular.forEach(scope.list, function(todo) {
+            if (todo.priority == scope.priorityNames[0]) scope.countHigh++;
+            if (todo.priority == scope.priorityNames[1]) scope.countMedium++;
+            if (todo.priority == scope.priorityNames[2]) scope.countLow++;
+          })
         }
       }
     };
