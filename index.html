@@ -5,12 +5,22 @@
     <script data-require="angular.js@1.5.0" data-semver="1.5.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
     <script src="controllers/main.js"></script>
     <script src="directives/todo.js"></script>
+    <script src="services/todo.service.js"></script>
   </head>
 
-  <body ng-app="myApp">
+  <body ng-app="myApp" ng-controller="main">
 
-    <div ng-controller="main" style="margin-left: 100px;">
+    <div style="margin-left: 100px;">
         <my-todo list="todoList" title="Angular To-do" priority-names="priorities"></my-todo>
+    </div>
+    <div style="margin-left: 100px;">
+      <div>
+        <button ng-click="save()" style="margin: 8px;">Save</button>
+        <button ng-click="restore()" style="margin: 8px;">Restore</button>
+      </div>
+      <div>
+        {{saveMessage}}
+      </div>
     </div>
 
   </body>
